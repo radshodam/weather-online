@@ -15,7 +15,7 @@ function BoxDays() {
     if (error) {
         <p>error</p>
     }
-    const slicedSevenDay = data?.data?.slice(1, 7);
+    const slicedSevenDay = data?.data?.slice(1, 8);
     console.log("slicedSevenDay", slicedSevenDay);
 
     return <>

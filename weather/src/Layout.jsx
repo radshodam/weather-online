@@ -1,9 +1,12 @@
+import Footer from "./components/Footer"
+import Header from "./components/Header"
+
 export default function Layout({ children }) {
     return (
         <>
-            <p>header</p>
+            <Header />
             <main className="min-h-screen">{children}</main>
-            <p> Footer </p>
+            <Footer />
         </>
     )
 }
