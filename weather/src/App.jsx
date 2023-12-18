@@ -18,10 +18,9 @@ function App() {
 
   return (
     <Layout >
-
       <main className="max-w-9xl mx-auto">
         <div className="max-w-3xl mx-auto">
-          <div className="flex flex-col justify-center items-center space-y-5 py-4 mx-2">
+          <div className="flex flex-col justify-center items-center space-y-5 py-8 mx-2">
             <ToggleDegree />
             <p className="font-extralight text-xs">Convert to Fahrenheit</p>
             <RefreshLocation />
@@ -39,9 +38,7 @@ function App() {
             <BoxDays />
           }
         </AnimatePresence>
-
       </main>
-
     </Layout>
   )
 }

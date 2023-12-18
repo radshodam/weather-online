@@ -6,13 +6,13 @@ import { useToggleDegreeStore } from '../../store/useToggleStore';
 
 export default function ToggleDegree() {
 
-    const { toggleDegree,isToggledDegree } = useToggleDegreeStore()
+    const { toggleDegree, isToggledDegree } = useToggleDegreeStore()
 
     return (
         <motion.div
             className={classNames(
                 isToggledDegree ? 'bg-indigo-600' : 'bg-gray-200',
-                'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2'
+                'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 shadow-lg'
             )}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

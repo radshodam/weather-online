@@ -21,7 +21,7 @@ export default function CardDay({ items, index }) {
             }}
             exit={{ opacity: 0 }}
             key={index}
-            className="bg-gray-600 w-80 h-48 min-w-[280px] lg:min-w-fit rounded-lg">
+            className="backdrop-blur-sm shadow-xl bg-black/50 w-80 h-48 min-w-[280px] lg:min-w-fit rounded-lg transition-all hover:shadow-md">
 
             <div className='flex flex-col items-center justify-center py-2'>
                 <h2 className='text-xl font-light text-white text-center'>{items?.valid_date}</h2>

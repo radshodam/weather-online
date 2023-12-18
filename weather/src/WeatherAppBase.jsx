@@ -25,7 +25,7 @@ const WeatherAppBase = () => {
   const fahrenheit = celsiusToFahrenheit(temp)
   return (
     <div>
-      <div className='w-11/12 max-w-[320px] py-2 mx-auto bg-gray-300 rounded-lg gap-0.5'>
+      <div className='w-11/12 max-w-[320px] py-2 mx-auto backdrop-blur-sm shadow-xl bg-white/30 rounded-lg gap-0.5'>
         <Card city_name={city_name} ts={ts} timezone={timezone} weather={weather} temp={temp} isCelsius={isCelsius} fahrenheit={fahrenheit} />
       </div>
     </div>
