@@ -38,13 +38,8 @@ function App() {
           <BoxDays />
         }
       </AnimatePresence>
-      <div className="flex justify-center items-center flex-col text-xl">
-        <h3 className="text-center text-xl max-w-md py-8 font-light">Discover weather details within the selected range! 🌦️ Press the button to find out.</h3>
-        <RangeDate />
-        <RangeDays />
 
-      </div>
-
+      <RangeDays />
     </Layout>
   )
 }

@@ -6,7 +6,7 @@ import useWeatherDates from '../../store/useWeatherDate';
 import formatDate from '../../functions/formatDate';
 
 
-const RangeDate = () => {
+const RangeDate = ({ isLoading }) => {
 
     const [startDateRange, setStartDateRange] = useState(null);
     const [endDateRange, setEndDateRange] = useState(null);
@@ -69,12 +69,20 @@ const RangeDate = () => {
                 placeholderText="End Date"
                 className="p-2 mt-2 border border-gray-300 rounded-md"
             />
+
             <button
                 onClick={fetchDataForDateRange}
-                className="bg-green-500 font-extralight backdrop:blur-sm shadow-sm hover:shadow-lg ease-linear transition-all text-white p-2 mt-3 rounded-md cursor-pointer"
+                className={`bg-green-500 font-extralight backdrop:blur-sm shadow-sm hover:shadow-lg ease-linear transition-all text-white p-2 mt-3 rounded-md cursor-pointer relative ${isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                disabled={isLoading}
             >
-                Find Out
+                {isLoading ? (
+                    <span>Loading...</span>
+                ) : (
+                    <span>Find Out</span>
+                )}
             </button>
+
         </motion.div>
     );
 };

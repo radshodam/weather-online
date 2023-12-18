@@ -25,7 +25,27 @@ export default {
           },
         },
       },
+      glassColors: {
+        blue: "rgba(66, 153, 225, 0.3)",
+        red: "rgba(255, 99, 71, 0.3)",
+        green: "rgba(0, 128, 0, 0.3)",
+        purple: 'rgba(128, 0, 128, 0.3)',
+        gold: 'rgba(255, 215, 0, 0.3)', 
+        pink: 'rgba(255, 182, 193, 0.3)', 
+        teal: 'rgba(0, 128, 128, 0.3)',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities, theme, variants }) {
+      const glassColors = theme("glassColors", {});
+      const utilities = {};
+      for (const [color, value] of Object.entries(glassColors)) {
+        utilities[`.glass-${color}`] = {
+          backgroundColor: value,
+        };
+      }
+      addUtilities(utilities, variants("glass"));
+    },
+  ],
 };

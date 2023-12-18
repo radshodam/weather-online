@@ -18,7 +18,7 @@ const LocalTime = ({ timestamp, timezone }) => {
     const localTime = useLocalTime(timestamp, timezone);
 
     return <div className='flex justify-start items-end text-sm font-extralight text-gray-600'>
-        <p >Last update : </p>
+        <p className='px-2'>{`Last update:`}</p>
         <p>{localTime}</p>
     </div>
 };

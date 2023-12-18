@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import * as LocationApi from "../../network/location-api";
-import SevenDaysWeather from "../SevenDaysWeather";
+import DaysWeatherComponent from "../DaysWeatherComponent";
 import useLocationStore from "../../store/useLocationStore";
 
 function BoxDays() {
@@ -24,7 +24,7 @@ function BoxDays() {
 
         <div className="flex flex-row gap-1 lg:flex-wrap lg:justify-center lg:items-center lg:gap-3 overflow-x-auto overflow-hidden">
             {slicedSevenDay?.map((day, index) => (
-                <SevenDaysWeather items={day} key={index} index={index} />
+                <DaysWeatherComponent items={day} key={index} index={index} />
             ))}
         </div>
     </>;

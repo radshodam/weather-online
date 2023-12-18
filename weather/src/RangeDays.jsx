@@ -1,8 +1,11 @@
 import useSWR from "swr";
 import * as LocationApi from "./network/location-api";
-// import SevenDaysWeather from "./SevenDaysWeather";
+// import DaysWeatherComponent from "./DaysWeatherComponent";
 import useLocationStore from "./store/useLocationStore";
 import useWeatherDates from "./store/useWeatherDate";
+import DaysWeatherComponent from "./components/DaysWeatherComponent";
+import RangeDate from "./components/range-date/RangeDate";
+import WeatherInfoComponent from "./components/WeatherInfoComponent";
 
 function RangeDays() {
 
@@ -16,7 +19,7 @@ function RangeDays() {
   const RangeDateDays = { startDate: startDate, endDate: endDate }
 
 
-  const { data, isLoading, error } = useSWR(["getRangeDayWeatherApi", GeographicalCoordinates,RangeDateDays], () => LocationApi.getRangeDayWeatherApi(GeographicalCoordinates, RangeDateDays));
+  const { data, isLoading, error } = useSWR(["getRangeDayWeatherApi", GeographicalCoordinates, RangeDateDays], () => LocationApi.getRangeDayWeatherApi(GeographicalCoordinates, RangeDateDays));
 
   if (isLoading) {
     <p>loading seven</p>
@@ -28,14 +31,15 @@ function RangeDays() {
 
   console.log("first", data);
 
-  return <>
-
+  return <div className="flex justify-center items-center flex-col text-xl">
+    <h3 className="text-center text-xl max-w-md py-8 font-light">Discover weather details within the selected range! 🌦️ Press the button to find out.</h3>
+    <RangeDate isLoading={isLoading} />
     <div className="flex flex-row gap-1 lg:flex-wrap lg:justify-center lg:items-center lg:gap-3 overflow-x-auto overflow-hidden">
-      {/* {slicedSevenDay?.map((day, index) => (
-        <SevenDaysWeather items={day} key={index} index={index} />
-      ))} */}
+      {data?.data?.map((day, index) => (
+        <WeatherInfoComponent weatherData={day} key={index} index={index} />
+      ))}
     </div>
-  </>;
+  </div>;
 }
 
 export default RangeDays;
