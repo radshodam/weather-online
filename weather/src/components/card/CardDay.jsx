@@ -32,7 +32,7 @@ export default function CardDay({ items, index }) {
                         src={`https://www.weatherbit.io/static/img/icons/${items?.weather?.icon}.png`}
                         alt={items?.weather?.description}
                     />
-                    <p className='text-6xl'>{isToggledDegree ? `${fahrenheit}°F`:`${items.temp}°C`}</p>
+                    <p className='text-3xl text-white'>{isToggledDegree ? `${fahrenheit}°F`:`${items.temp}°C`}</p>
                 </div>
             </div>
             <p className='text-xl text-center py-1 font-light text-white/70'>{items?.weather?.description}</p>
