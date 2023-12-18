@@ -8,6 +8,7 @@ import BoxDays from "./components/card/BoxDays";
 import useLocationStore from "./store/useLocationStore";
 import RefreshLocation from "./components/RefreshLocation";
 import ToggleDegree from "./components/buttons/ToggleDegree";
+import RangeDate from "./components/RangeDate";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <div className="max-w-3xl mx-auto">
           <div className="flex flex-col justify-center items-center space-y-5 py-8 mx-2">
             <ToggleDegree />
+            {/* <RangeDate /> */}
             <p className="font-extralight text-xs">Convert to Fahrenheit</p>
             <RefreshLocation />
           </div>
