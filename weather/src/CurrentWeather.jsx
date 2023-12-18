@@ -4,7 +4,7 @@ import { celsiusToFahrenheit } from './functions/celsiusToFahrenheit';
 import Card from './components/card/Card';
 import useLocationStore from './store/useLocationStore';
 
-const WeatherAppBase = () => {
+const CurrentWeather = () => {
 
   const { location } = useLocationStore();
 
@@ -33,4 +33,4 @@ const WeatherAppBase = () => {
   );
 };
 
-export default WeatherAppBase;
+export default CurrentWeather;

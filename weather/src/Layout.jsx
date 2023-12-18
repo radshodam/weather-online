@@ -7,7 +7,7 @@ export default function Layout({ children }) {
         <>
             <Header />
             <BgAnimationCover />
-            <main className="min-h-screen">{children}</main>
+            <main className="min-h-screen max-w-9xl mx-auto">{children}</main>
             <Footer />
         </>
     )

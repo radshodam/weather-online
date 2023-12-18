@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from 'framer-motion';
-import { celsiusToFahrenheit } from "../../functions/celsiusToFahrenheit";
-import { useToggleDegreeStore } from "../../store/useToggleStore";
-import { getDayOfWeekFromDate } from "../../functions/getDayFromDate";
+import { celsiusToFahrenheit } from "../functions/celsiusToFahrenheit";
+import { useToggleDegreeStore } from "../store/useToggleStore";
+import { getDayOfWeekFromDate } from "../functions/getDayFromDate";
 
-export default function CardDay({ items, index }) {
+export default function SevenDaysWeather({ items, index }) {
     const fahrenheit = celsiusToFahrenheit(items?.temp)
 
     const { isToggledDegree } = useToggleDegreeStore();

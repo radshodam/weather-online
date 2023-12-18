@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import * as LocationApi from "../../network/location-api";
-import CardDay from "./CardDay";
+import SevenDaysWeather from "../SevenDaysWeather";
 import useLocationStore from "../../store/useLocationStore";
 
 function BoxDays() {
@@ -8,7 +8,7 @@ function BoxDays() {
     const { location } = useLocationStore();
 
     const GeographicalCoordinates = { latitude: location?.latitude, longitude: location?.longitude }
-  
+
 
     const { data, isLoading, error } = useSWR(["getSevenDayWeatherApi", GeographicalCoordinates], () => LocationApi.getSevenDayWeatherApi(GeographicalCoordinates));
 
@@ -24,7 +24,7 @@ function BoxDays() {
 
         <div className="flex flex-row gap-1 lg:flex-wrap lg:justify-center lg:items-center lg:gap-3 overflow-x-auto overflow-hidden">
             {slicedSevenDay?.map((day, index) => (
-                <CardDay items={day} key={index} index={index} />
+                <SevenDaysWeather items={day} key={index} index={index} />
             ))}
         </div>
     </>;

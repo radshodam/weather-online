@@ -19,3 +19,19 @@ export async function getSevenDayWeatherApi(GeographicalCoordinates) {
   );
   return response.data;
 }
+export async function getRangeDayWeatherApi(
+  GeographicalCoordinates,
+  RangeDateDays,
+) {
+  const { latitude, longitude } = GeographicalCoordinates;
+
+  const { startDate, endDate } = RangeDateDays;
+
+  const response = await api.get(
+    `/history/daily?lat=${latitude}&lon=${longitude}&start_date=${startDate}&end_date=${endDate}&key=${
+      import.meta.env.VITE_REACT_API_KEY_WEATHER
+    }`,
+  );
+
+  return response.data;
+}

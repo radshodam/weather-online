@@ -1,6 +1,6 @@
 import Layout from "./Layout"
 import { AnimatePresence } from 'framer-motion';
-import WeatherAppBase from "./WeatherAppBase";
+import CurrentWeather from "./CurrentWeather";
 import CurrentCityCard from "./components/card/CurrentCityCard";
 import { useToggleStore } from "./store/useToggleStore";
 import Button from "./components/buttons/Button";
@@ -8,7 +8,8 @@ import BoxDays from "./components/card/BoxDays";
 import useLocationStore from "./store/useLocationStore";
 import RefreshLocation from "./components/RefreshLocation";
 import ToggleDegree from "./components/buttons/ToggleDegree";
-import RangeDate from "./components/RangeDate";
+import RangeDays from "./RangeDays";
+import RangeDate from "./components/range-date/RangeDate";
 
 
 function App() {
@@ -19,28 +20,31 @@ function App() {
 
   return (
     <Layout >
-      <main className="max-w-9xl mx-auto">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex flex-col justify-center items-center space-y-5 py-8 mx-2">
-            <ToggleDegree />
-            {/* <RangeDate /> */}
-            <p className="font-extralight text-xs">Convert to Fahrenheit</p>
-            <RefreshLocation />
-          </div>
-          <CurrentCityCard>
-            <WeatherAppBase />
-            <Button />
-          </CurrentCityCard>
+
+      <div className="max-w-3xl mx-auto">
+        <div className="flex flex-col justify-center items-center space-y-5 py-8 mx-2">
+          <ToggleDegree />
+          <p className="font-extralight text-xs">Convert to Fahrenheit</p>
+          <RefreshLocation />
         </div>
+        <CurrentCityCard>
+          <CurrentWeather />
+          <Button />
+        </CurrentCityCard>
+      </div>
 
-        {/* suggestion */}
+      <AnimatePresence>
+        {isToggled &&
+          <BoxDays />
+        }
+      </AnimatePresence>
+      <div className="flex justify-center items-center flex-col text-xl">
+        <h3 className="text-center text-xl max-w-md py-8 font-light">Discover weather details within the selected range! 🌦️ Press the button to find out.</h3>
+        <RangeDate />
+        <RangeDays />
 
-        <AnimatePresence>
-          {isToggled &&
-            <BoxDays />
-          }
-        </AnimatePresence>
-      </main>
+      </div>
+
     </Layout>
   )
 }

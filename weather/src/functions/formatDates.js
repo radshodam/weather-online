@@ -7,4 +7,4 @@ export default function formatDates(futureDates) {
   });
 
   return formattedDates;
-}
+}formatDate(endDateRange)
