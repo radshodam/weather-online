@@ -6,7 +6,7 @@ export default function useWeather(GeographicalCoordinates) {
 
     // exp { latitude: 35.6895, longitude: 139.6917 }
 
-    const { data, isLoading, mutate } = useSWR(GeographicalCoordinates, async () => {
+    const { data, isLoading, mutate,error } = useSWR(GeographicalCoordinates, async () => {
         try {
             return await LocationApi.getWeatherApi(GeographicalCoordinates)
         } catch (error) {
@@ -21,6 +21,7 @@ export default function useWeather(GeographicalCoordinates) {
     return {
         weatherData: data,
         weatherLoading: isLoading,
+        weatherError: error,
         mutateWeather: mutate,
     }
 

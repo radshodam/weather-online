@@ -1,9 +1,13 @@
 // toggleStore.js
 import { create } from "zustand";
 
-const useToggleStore = create((set) => ({
+export const useToggleStore = create((set) => ({
   isToggled: false,
   toggle: () => set((state) => ({ isToggled: !state.isToggled })),
 }));
 
-export default useToggleStore;
+export const useToggleDegreeStore = create((set) => ({
+  isToggledDegree: false,
+  toggleDegree: () => set((state) => ({ isToggledDegree: !state.isToggledDegree })),
+}));
+

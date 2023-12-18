@@ -1,10 +1,13 @@
 import React from "react";
 import { motion } from 'framer-motion';
 import { celsiusToFahrenheit } from "../../functions/celsiusToFahrenheit";
+import { useToggleDegreeStore } from "../../store/useToggleStore";
 
 export default function CardDay({ items, index }) {
     const fahrenheit = celsiusToFahrenheit(items?.temp)
-    console.log("fahrenheit", fahrenheit);
+
+    const { isToggledDegree } = useToggleDegreeStore();
+
 
     return (
         <motion.div
@@ -29,8 +32,7 @@ export default function CardDay({ items, index }) {
                         src={`https://www.weatherbit.io/static/img/icons/${items?.weather?.icon}.png`}
                         alt={items?.weather?.description}
                     />
-                    <p className='text-6xl text-white/75'>{items.temp}°C</p>
-                    {/* <p className='text-6xl'>{isCelsius ? `${items.temp}°C` : `${fahrenheit}°F`}</p> */}
+                    <p className='text-6xl'>{isToggledDegree ? `${fahrenheit}°F`:`${items.temp}°C`}</p>
                 </div>
             </div>
             <p className='text-xl text-center py-1 font-light text-white/70'>{items?.weather?.description}</p>

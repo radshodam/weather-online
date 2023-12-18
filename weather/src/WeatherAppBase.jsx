@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 import useWeather from './hooks/useWeather';
 import { celsiusToFahrenheit } from './functions/celsiusToFahrenheit';
 import Card from './components/card/Card';
+import useLocationStore from './store/useLocationStore';
 
 const WeatherAppBase = () => {
 
+  const { location } = useLocationStore();
+
   const [isCelsius, setIsCelsius] = useState(true);
 
-  const GeographicalCoordinates = { latitude: 35.6895, longitude: 139.6917 }
+  const GeographicalCoordinates = { latitude: location?.latitude, longitude: location?.longitude }
 
-  const { weatherData, weatherLoading,error } = useWeather(GeographicalCoordinates);
-  
+  const { weatherData, weatherLoading, weatherError } = useWeather(GeographicalCoordinates);
+
   if (weatherLoading) {
     return <p>Loading...</p>;
   }
-  if (error) {
-    return <p>error...</p>;
+  if (weatherError) {
+    return <p>error</p>;
   }
   const { city_name, temp, weather, ts, timezone } = weatherData.data[0];
 

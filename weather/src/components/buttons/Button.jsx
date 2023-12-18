@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from 'framer-motion';
 
-import useToggleStore from "../../store/useToggleStore";
+import {useToggleStore} from "../../store/useToggleStore";
 
 export default function Button() {
     const { isToggled, toggle } = useToggleStore();
