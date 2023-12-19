@@ -34,7 +34,7 @@ function RangeDays() {
   return <div className="flex justify-center items-center flex-col text-xl">
     <h3 className="text-center text-xl max-w-md py-8 font-light">Discover weather details within the selected range! 🌦️ Press the button to find out.</h3>
     <RangeDate isLoading={isLoading} />
-    <div className="flex flex-row gap-1 lg:flex-wrap lg:justify-center lg:items-center lg:gap-3 overflow-x-auto overflow-hidden">
+    <div className="flex flex-row gap-1 w-full lg:flex-wrap lg:justify-center lg:items-center lg:gap-3 overflow-x-auto">
       {data?.data?.map((day, index) => (
         <WeatherInfoComponent weatherData={day} key={index} index={index} />
       ))}
