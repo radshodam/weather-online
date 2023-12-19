@@ -10,17 +10,19 @@ import RefreshLocation from "./components/RefreshLocation";
 import ToggleDegree from "./components/buttons/ToggleDegree";
 import RangeDays from "./RangeDays";
 import RangeDate from "./components/range-date/RangeDate";
+import useWeatherDates from "./store/useWeatherDate";
 
 
 function App() {
 
   const { isToggled } = useToggleStore();
   const { location } = useLocationStore();
+  const { startDate, endDate } = useWeatherDates();
+
 
 
   return (
     <Layout >
-
       <div className="max-w-3xl mx-auto">
         <div className="flex flex-col justify-center items-center space-y-5 py-8 mx-2">
           <ToggleDegree />
@@ -38,8 +40,10 @@ function App() {
           <BoxDays />
         }
       </AnimatePresence>
-
-      <RangeDays />
+      <div className="flex justify-center items-center flex-col text-xl">
+        <RangeDate />
+        {startDate && endDate && <RangeDays />}
+      </div>
     </Layout>
   )
 }
