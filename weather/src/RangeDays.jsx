@@ -6,6 +6,7 @@ import useWeatherDates from "./store/useWeatherDate";
 import WeatherInfoComponent from "./components/WeatherInfoComponent";
 import { WrapperGroupCardSkelton } from "./components/skelton/WrapperCardSkelton";
 import GroupCardSkeleton from "./components/skelton/GroupCardSkeleton";
+import { ErrorComponent } from "./components/ErrorComponent";
 
 function RangeDays() {
   const { locationGeo } = useLocationGeoStore();
@@ -18,7 +19,7 @@ function RangeDays() {
     return <WrapperGroupCardSkelton><GroupCardSkeleton count={3} /></WrapperGroupCardSkelton>
   }
   if (error) {
-    return <p>Error loading data...</p>
+    return <ErrorComponent error={error} />
   }
 
   return (

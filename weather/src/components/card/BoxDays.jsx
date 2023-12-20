@@ -4,6 +4,7 @@ import DaysWeatherComponent from "../DaysWeatherComponent";
 import useLocationGeoStore from "../../store/useLocationGeoStore";
 import { WrapperGroupCardSkelton } from "../skelton/WrapperCardSkelton";
 import GroupCardSkeleton from "../skelton/GroupCardSkeleton";
+import { ErrorComponent } from "../ErrorComponent";
 
 function BoxDays() {
 
@@ -18,7 +19,7 @@ function BoxDays() {
         return <WrapperGroupCardSkelton><GroupCardSkeleton count={5} /></WrapperGroupCardSkelton>
     }
     if (error) {
-        return <p>error</p>
+        return <ErrorComponent error={error} />
     }
     const slicedSevenDay = data?.data?.slice(1, 8);
 

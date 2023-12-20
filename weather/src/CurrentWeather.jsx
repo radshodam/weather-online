@@ -5,6 +5,7 @@ import Card from './components/card/Card';
 import useLocationGeoStore from './store/useLocationGeoStore';
 import { CardSkeleton } from './components/skelton/CardSkeleton';
 import { WrapperCardSkelton } from './components/skelton/WrapperCardSkelton';
+import { ErrorComponent } from './components/ErrorComponent';
 
 const CurrentWeather = () => {
 
@@ -21,7 +22,7 @@ const CurrentWeather = () => {
 
   }
   if (weatherError) {
-    return <p>error</p>;
+    return <ErrorComponent error={weatherError} />;
   }
   const { city_name, temp, weather, ts, timezone } = weatherData.data[0];
 

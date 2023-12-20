@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { useEffect } from "react";
 import useLocationGeoStore from "../../store/useLocationGeoStore";
 import { useSearchParams } from "react-router-dom";
+import { ErrorComponent } from "../ErrorComponent";
 
 export default function SearchQuery() {
 
@@ -28,6 +29,6 @@ export default function SearchQuery() {
         return <p>loading</p>;
     }
     if (error) {
-        return <p>error search</p>;
+        return <ErrorComponent error={error} />;
     }
 }
