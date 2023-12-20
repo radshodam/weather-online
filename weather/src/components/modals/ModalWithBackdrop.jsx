@@ -25,7 +25,7 @@ const ModalWithBackdrop = ({ isOpen, onClose, children, size }) => {
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className={`fixed transform overflow-y-auto overflow-hidden flex items-center rounded-lg z-30 bg-white px-2 mx-2 min-h-[96px]  sm:min-h-[125px] h-auto text-left shadow-xl transition-all sm:w-full sm:m-6 ${determineSize()}`}
+            className={`fixed transform overflow-y-auto overflow-hidden  py-9 rounded-lg z-30 bg-white px-2 mx-2 min-h-[96px]  sm:min-h-[125px] h-auto text-left shadow-xl transition-all sm:w-full sm:m-6 ${determineSize()}`}
             onClick={(e) => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
