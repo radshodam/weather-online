@@ -1,17 +1,22 @@
 import useSWR from "swr";
 import * as LocationApi from "./network/location-api";
 // import DaysWeatherComponent from "./DaysWeatherComponent";
-import useLocationStore from "./store/useLocationStore";
+import useLocationGeoStore from "./store/useLocationGeoStore";
 import useWeatherDates from "./store/useWeatherDate";
 import WeatherInfoComponent from "./components/WeatherInfoComponent";
+import { WrapperGroupCardSkelton } from "./components/skelton/WrapperCardSkelton";
+import GroupCardSkeleton from "./components/skelton/GroupCardSkeleton";
 
 function RangeDays() {
-  const { location } = useLocationStore();
+  const { locationGeo } = useLocationGeoStore();
   const { startDate, endDate } = useWeatherDates();
-  const GeographicalCoordinates = { latitude: location?.latitude, longitude: location?.longitude }
+  const GeographicalCoordinates = { latitude: locationGeo?.latitude, longitude: locationGeo?.longitude }
   const RangeDateDays = { startDate: startDate, endDate: endDate }
   const { data, isLoading, error } = useSWR(["getRangeDayWeatherApi", GeographicalCoordinates, RangeDateDays], () => LocationApi.getRangeDayWeatherApi(GeographicalCoordinates, RangeDateDays));
 
+  if (isLoading) {
+    return <WrapperGroupCardSkelton><GroupCardSkeleton count={3} /></WrapperGroupCardSkelton>
+  }
   if (error) {
     return <p>Error loading data...</p>
   }

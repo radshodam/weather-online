@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import useLocationStore from '../store/useLocationStore';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import useLocationGeoStore from '../store/useLocationGeoStore';
 
 const RefreshLocation = () => {
-  const { setLocation } = useLocationStore();
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('city');
+  const navigate = useNavigate();
+
+  const { setLocationGeo } = useLocationGeoStore();
   const [error, setError] = useState(null);
 
   const getCurrentLocation = () => {
@@ -10,8 +15,14 @@ const RefreshLocation = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setLocation(latitude, longitude);
+          setLocationGeo(latitude, longitude);
           setError(null); // Clear any previous error
+
+          if (searchParams.has('city')) {
+            // Redirect to the home page
+            navigate('/');
+
+          }
         },
         (error) => {
           setError(error.message);
@@ -23,13 +34,16 @@ const RefreshLocation = () => {
   };
 
   React.useEffect(() => {
-    getCurrentLocation();
-  }, []); // Empty dependency array to run this effect only once when the component mounts
-
+    if (!query) {
+      getCurrentLocation();
+    }
+  }, [query]); // Empty dependency
   return (
     <div>
       <div>
-        <button className='text-sm font-light text-gray-500' onClick={getCurrentLocation}>Refresh Location</button>
+        <button className='text-sm font-light text-gray-500' onClick={getCurrentLocation}>
+          Refresh Location
+        </button>
       </div>
     </div>
   );

@@ -1,22 +1,24 @@
 import useSWR from "swr";
 import * as LocationApi from "../../network/location-api";
 import DaysWeatherComponent from "../DaysWeatherComponent";
-import useLocationStore from "../../store/useLocationStore";
+import useLocationGeoStore from "../../store/useLocationGeoStore";
+import { WrapperGroupCardSkelton } from "../skelton/WrapperCardSkelton";
+import GroupCardSkeleton from "../skelton/GroupCardSkeleton";
 
 function BoxDays() {
 
-    const { location } = useLocationStore();
+    const { locationGeo } = useLocationGeoStore();
 
-    const GeographicalCoordinates = { latitude: location?.latitude, longitude: location?.longitude }
+    const GeographicalCoordinates = { latitude: locationGeo?.latitude, longitude: locationGeo?.longitude }
 
 
     const { data, isLoading, error } = useSWR(["getSevenDayWeatherApi", GeographicalCoordinates], () => LocationApi.getSevenDayWeatherApi(GeographicalCoordinates));
 
     if (isLoading) {
-        <p>loading seven</p>
+        return <WrapperGroupCardSkelton><GroupCardSkeleton count={5} /></WrapperGroupCardSkelton>
     }
     if (error) {
-        <p>error</p>
+        return <p>error</p>
     }
     const slicedSevenDay = data?.data?.slice(1, 8);
 

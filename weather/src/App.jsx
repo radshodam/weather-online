@@ -5,20 +5,19 @@ import CurrentCityCard from "./components/card/CurrentCityCard";
 import { useToggleStore } from "./store/useToggleStore";
 import Button from "./components/buttons/Button";
 import BoxDays from "./components/card/BoxDays";
-import useLocationStore from "./store/useLocationStore";
 import RefreshLocation from "./components/RefreshLocation";
 import ToggleDegree from "./components/buttons/ToggleDegree";
 import RangeDays from "./RangeDays";
 import RangeDate from "./components/range-date/RangeDate";
 import useWeatherDates from "./store/useWeatherDate";
+import SearchQuery from "./components/search/SearcQuery";
+
 
 
 function App() {
 
   const { isToggled } = useToggleStore();
-  const { location } = useLocationStore();
   const { startDate, endDate } = useWeatherDates();
-
 
 
   return (
@@ -43,6 +42,7 @@ function App() {
       <div className="flex justify-center items-center flex-col text-xl">
         <RangeDate />
         {startDate && endDate && <RangeDays />}
+        <SearchQuery />
       </div>
     </Layout>
   )

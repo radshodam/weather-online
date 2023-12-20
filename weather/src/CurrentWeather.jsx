@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 import useWeather from './hooks/useWeather';
 import { celsiusToFahrenheit } from './functions/celsiusToFahrenheit';
 import Card from './components/card/Card';
-import useLocationStore from './store/useLocationStore';
+import useLocationGeoStore from './store/useLocationGeoStore';
+import { CardSkeleton } from './components/skelton/CardSkeleton';
+import { WrapperCardSkelton } from './components/skelton/WrapperCardSkelton';
 
 const CurrentWeather = () => {
 
-  const { location } = useLocationStore();
+  const { locationGeo } = useLocationGeoStore();
 
   const [isCelsius, setIsCelsius] = useState(true);
 
-  const GeographicalCoordinates = { latitude: location?.latitude, longitude: location?.longitude }
+  const GeographicalCoordinates = { latitude: locationGeo?.latitude, longitude: locationGeo?.longitude }
 
   const { weatherData, weatherLoading, weatherError } = useWeather(GeographicalCoordinates);
 
   if (weatherLoading) {
-    return <p>Loading...</p>;
+    return <WrapperCardSkelton><CardSkeleton /></WrapperCardSkelton>
+
   }
   if (weatherError) {
     return <p>error</p>;
